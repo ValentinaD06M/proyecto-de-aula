@@ -4,28 +4,34 @@ import java.io.*;
 import java.text.DecimalFormat;
 
 
-public class Posici髇_Libre
+public class Posici贸n_Libre
 {
 		public static void main(String args[])
 		{
 				BufferedReader br =  new BufferedReader ( new InputStreamReader (System.in));
 				BufferedWriter bw =  new BufferedWriter ( new OutputStreamWriter (System.out));
-				DecimalFormat df = new DecimalFormat("#0.0000");
 				
-					
-				try
-				{
-						double R = Double.parseDouble(br.readLine());
-						double A = 3.14159 * Math.pow(R,2);
-						
-						bw.write("A=" + df.format(A) + "\n");
-						bw.flush();
-						
-		}		
-				catch (Exception e)
-				{
-						e.printStackTrace();
-				}
+				int f1 = 3, c1 = 4; // esquina inferior izquierda
+				int f2 = 3, c2 = 7; // esquina inferior derecha
+				int max = 0, dist1, dist2;
+				int[] pos = new int[2]; //posici贸n a devolver
+				char [] [] board;
+				
+					for(int i = 0; i < board.rowns; i++) {
+					{
+						for (int j = 0; j < board.columns; j++){
+						{
+						print m [i][j];
+						}
+						}
+					}
+							if (m [i-j] [i-j] = 0)
+							{
+								bw.write(df.format(Posici贸n_Libre) + "\n");
+								bw.flush();
+							}
+							
+							return Posici贸n_Libre
+					}
 		}
-	
 }
