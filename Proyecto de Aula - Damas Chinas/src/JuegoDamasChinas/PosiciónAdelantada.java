@@ -35,7 +35,7 @@ public class PosiciónAdelantada
                             max = dist2;
                             //fila de la ficha actualmente mas lejana
                             pos[0] = i;
-                            //columna d ela fciha actualmente mas lejana
+                            //columna d ela ficha actualmente mas lejana
                             pos[1] = j;
                         }
                     }
