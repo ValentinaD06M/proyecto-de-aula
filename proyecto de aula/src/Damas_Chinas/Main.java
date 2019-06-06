@@ -3,23 +3,23 @@ import java.io.*;
 public class Main{
   //Variables.  
     public char [] [] tablero;
-    public char jugadorUno;
-    public char jugadorDos;
+    public char FichaNegra;
+    public char FichaRoja;
     public boolean turno;
     int contador;        
 
- //Constructor(Inicializa Variables).
+ //Constructor(Se especifican las variables).
     public Main(){
         
-        tablero      = new char[3][3];                
-        jugadorUno   = 'X';
-        jugadorDos   = 'O';
-        turno        = true;  //Si El Valor De "turno" Es Igual A "true" El Turno Es Del Jugador 1, De Lo Contrario Es Jugador 2. 
-        int contador = 0;     //Lleva Cuenta De Las Veces Que Han Participado Los Jugadores 1 y 2. 
+        tablero      = new char[8][8];                
+        FichaNegra   = 'X';
+        FichaRoja    = 'O';
+        turno        = true;  //Si el valor de "turno" es igual a "true" el turno es del jugador de fichas negras, de lo contrario es el turno del jugador de fichas rojas. 
+        int contador = 0;     //Lleva la cuenta de las veces que han participado los Jugadores de las fichas negras y rojas. 
         inicializarTablero();  
     }
         
-  //Inicia El Arreglo, Especifica El Numero Que Le Corresponde A Cada Casilla.
+  //Inicia el arreglo, especifica el número que le corresponde a cada una de las casillas.
     public void inicializarTablero(){
         
         int posicion = 1;
@@ -34,12 +34,12 @@ public class Main{
         }
     }
     
-  //Imprime El Formato Del Tablero.
+  //Imprime el formato del tablero.
     public void imprimirTablero(){
                 
-        for(int i=0;i<3;i++){
+        for(int i=0;i<8;i++){
                 
-                for(int j=0;j<3;j++){
+                for(int j=0;j<8;j++){
                         
                         if(j<2)
                         
@@ -60,29 +60,32 @@ public class Main{
         System.out.println();
     }
     
-  //Indica La Posicion Donde Se Ingresara El Dato Dentro Del Arreglo Por Medio De Parametros.   
+  //Indica la posicion donde se ingresara el dato dentro del arreglo por medio de parametros.   
     public void indicarPosicionArreglo (int a, int b, char c) {tablero [a][b]=c;}
-  //Manipula el valor De La Variable "turno".   
-    public void setTurno               (boolean d)            {turno         =d;}
-  //Manipula el valor De La Variable "contador".   
-    public void setContador            (int e)                {contador      =e;} 
     
-  //Regresa Valor De La Posicion Del Arreglo Indicada Por Medio De Parametros.   
+  //Manipula el valor de la variable "turno".   
+    public void setTurno (boolean d) {turno = d;}
+    
+  //Manipula el valor de la variable "contador".   
+    public void setContador (int e) {contador = e;} 
+    
+  //Regresa valor de la posicion del arreglo indicada por medio de parametros.   
     public char getPosicionArreglo (int a, int b)  {return tablero[a][b];} 
         
-  //Regresa Valor De La Variable "jugadorUno".
-    public char getJugadorUno      ()  {return jugadorUno   ;}            
+  //Regresa Valor de la variable "FichaNegra".
+    public char getFichaNegra () {return FichaNegra;}            
    
-  //Regresa Valor De La Variable "jugadorDos".
-    public char getJugadorDos      ()  {return jugadorDos   ;}            
+  //Regresa Valor de la variable "FichaRoja".
+    public char getFichaRoja () {return FichaRoja;}            
   
-  //Regresa Valor De La Variable "turno". 
-    public boolean getTurno        ()  {return turno        ;}
-  //Regresa Valor De La Variable "contador".              
-    public int getContador         ()  {return contador     ;}           
+  //Regresa Valor de la variable "turno". 
+    public boolean getTurno ()  {return turno;}
+  
+    //Regresa valor de la variable "contador".              
+    public int getContador ()  {return contador;}           
     
-    
-  //Imprime e Indica El El Turno Del Jugador Que Le Toca Elejir Una Casilla Con Ayuda del Metodo "getTurno()".
+   
+  //Imprime e indica el turno del jugador que le toca elejir una casilla con ayuda del método "getTurno()".
     public void indicarTurno(){
         
         if(getTurno()==true)
@@ -94,22 +97,23 @@ public class Main{
                 System.out.println("JUGADOR 2: Elija Una Casilla Ingresando El Numero Correspondiente.");       
     }
     
-  //Regresa El Caracter De Tipo Char Para Posteriormente Ingresarlo A Alguna Posicion Del Arreglo, Usandolo En Otro Metodo.
+    
+  //Regresa el caracter de tipo char para luego ingresarlo a alguna posición del arreglo, usandolo en otro método.
     public char obtenerFigura(){
         
         if(getTurno()==true)
                 
-                return jugadorUno;
+                return FichaNegra;
                 
         else
                 
-                return jugadorDos;      
+                return FichaRoja;      
     }
     
-  //Cambia El Valor De La Variable "turno" Para Llevar El Orden Correcto De Los Turnos Entre Los 2 Jugadores.    
+  //Cambia el valor de la variable "turno" para llevar el orden correcto de los turnos entre los 2 Jugadores.    
     public void cambiarTurno(){         
         
-        if(obtenerFigura()=='X') //Si el Metodo regresa un valor char igual a "X" cambia el valor de "turno" a "false".
+        if(obtenerFigura()=='X') //Si el método regresa un valor char igual a "X" cambia el valor de "turno" a "false".
                 
                 setTurno(false);
         
@@ -118,29 +122,29 @@ public class Main{
                 setTurno(true); 
     }
       
-  //Verifica Si La Posicion Del Arreglo Al Que El Jugador Desea Ingresar El Caracter No Fue Utilizada Antes.  
+  //Verifica si la posicion del arreglo al que el jugador desea ingresar el caracter no fue utilizada antes.  
     public void comprobarEspacio(char espacio, int posicionUno, int posicionDos){
       
-      //Si Se Cumple La Condicion Se Ingresa El Valor En La Posicion Del Arreglo Especificada.  
-        if(espacio!=getJugadorUno()&&espacio!=getJugadorDos()){ 
+      //Si se cumple la condicion se ingresa el valor en la posicion del arreglo especificada.  
+        if(espacio!=getFichaNegra()&&espacio!=getFichaRoja()){ 
                 
-           indicarPosicionArreglo(posicionUno, posicionDos,obtenerFigura());//Ingresa EL Caracter Si Se Cumple La Condicion.
-           cambiarTurno();                                                  //Cambia El Turno Si Se Cumple La Condicion.  
-           contador++;                                                      //Solo Incremente Cuando Se Cumple La Anterior Condicion.              
+           indicarPosicionArreglo(posicionUno, posicionDos,obtenerFigura());//Ingresa el caracter si se cumple la condición.
+           cambiarTurno();                                                  //Cambia el turno si se cumple la Condición.  
+           contador++;                                                      //Solo incremente cuando se cumple la condición anterior.              
         }
         
         else
          
-         //Imprime El Siguiente Mensaje En Caso De Que No Se Cumpla La Anterior Condicion.                              
+         //Imprime el siguiente mensaje en caso de que no se cumpla la condición anterior.                              
            System.out.println("La Casilla Esta Ocupada, Elija Otra Por Favor");                 
     }
             
-  //Metodo Que Hace Uso De Un "switch" Para Indicar La Posicion Del Arreglo Que El Jugador Elijio En El Juego.  
+  //Método que hace uso de un "switch" para indicar la posicion del arreglo que el jugador elijio en el juego.  
     public void elegirPosicion(int posicion){
                            
             switch(posicion){
                 
-                  //Comprueba Si La Posicion Esta Disponible Valiendose Del Metodo "comprobarEspacio()"
+                  //Comprueba si la posición esta disponible guiandose del método "comprobarEspacio()"
                         case 1:comprobarEspacio(getPosicionArreglo(0,0),0,0);break;
                         case 2:comprobarEspacio(getPosicionArreglo(0,1),0,1);break;
                         case 3:comprobarEspacio(getPosicionArreglo(0,2),0,2);break;
@@ -152,12 +156,12 @@ public class Main{
                         case 9:comprobarEspacio(getPosicionArreglo(2,2),2,2);break;
                         
                         default:
-                          //Imprime El Siguiente Mensaje En Caso De Que El "switch" No Reciba Un Digito Del 1 al 9.     
+                          //Imprime el siguiente mensaje en caso de que el "switch" no reciba un digito del 1 al 9.     
                                 System.out.println("Por Favor, Ingrese Solo Un Digito Del 1 al 9.");break;                              
             }           
     }
     
-  //Solo Imprime Un Mensaje Distinto Dependiendo Del Jugador Que Haya Resultado Ganador. 
+  //Solo imprime un mensaje distinto dependiendo del jugador que haya ganado. 
     public void decirGanador(char a){
         
         
@@ -173,10 +177,10 @@ public class Main{
                                 
     }
     
- //Verifica Las Unicas 8 Combinaciones Que Pueden Dar La Victoria A Uno De Los Jugadores.
+ //Verifica las unicas 8 combinaciones que pueden dar la victoria a uno de los jugadores.
     public void buscarGanador(){
                   
-      //Ciclo Con Instrucciones Para Comprobar Las 3 Posibilidades De Ganar De Forma Horizontal.
+      //Ciclo con instrucciones para comprobar las 3 posibilidades de ganar de forma horizontal.
         for(int i=0;i<3;i++){
                 
                 for(int j=1;j<2;j++){
@@ -190,7 +194,7 @@ public class Main{
                 }                       
         }
    
-      //Ciclo Con Instrucciones Para Comprobar Las 3 Posibilidades De Ganar De Forma Vertical.  
+      //Ciclo con instrucciones para comprobar las 3 posibilidades de ganar de forma vertical.  
         for(int i=0;i<3;i++){
                 
                 for(int j=1;j<2;j++){
@@ -204,7 +208,7 @@ public class Main{
                 }
         }
         
-      //Instrucciones Para Comprobar La Unica Posibilidad De Ganar De Forma Diagonal.   
+      //Instrucciones para comprobar la única posibilidad de ganar de forma diagonal.   
         if(tablero[1][1]==tablero[0][0]&&tablero[1][1]==tablero[2][2]){
         
            decirGanador(tablero[1][1]);
@@ -212,7 +216,7 @@ public class Main{
            setContador(10);
         }   
            
-      //Ciclo Con Instrucciones Para Comprobar La Unica Posibilidade De Ganar De Forma Diagonal Inversa.
+      //Ciclo con instrucciones para comprobar la única posibilidade de ganar de forma diagonal inversa.
         if(tablero[1][1]==tablero[0][2]&&tablero[1][1]==tablero[2][0]){
                 
            decirGanador(tablero[1][1]);
@@ -221,12 +225,12 @@ public class Main{
         }       
     }    
         
-  //Metodo Que Contiene El Flujo Y El Orden Del Juego.
-    public void jugarGato(){
+  //Método que contiene el flujo Y el orden del juego.
+    public void jugarDamas(){
         
         BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
         
-        System.out.println("BIENVENIDO A GATO Ver. 1.0");       
+        System.out.println("BIENVENIDO A JUEGO DAMAS Ver. 1.0");       
                 
         do{
         
@@ -251,7 +255,7 @@ public class Main{
         
           if(getContador()==9){
                 
-                System.out.println("¡GATO!¡JUEGO EMPATADO!");                                        
+                System.out.println("JUEGO EMPATADO!");                                        
             imprimirTablero();
             System.out.println("THANKS FOR PLAYING!");              
           }
@@ -263,7 +267,7 @@ public class Main{
         
         Main Objeto = new Main();
         
-        Objeto.jugarGato();     
+        Objeto.jugarDamas();     
                                                                                         
     }    
 }
