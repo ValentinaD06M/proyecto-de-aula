@@ -11,7 +11,7 @@ public class Main{
  //Constructor(Se especifican las variables).
     public Main(){
         
-        tablero      = new char[8][8];                
+        tablero      = new char[12][12];                
         FichaNegra   = 'X';
         FichaRoja    = 'O';
         turno        = true;  //Si el valor de "turno" es igual a "true" el turno es del jugador de fichas negras, de lo contrario es el turno del jugador de fichas rojas. 
@@ -24,9 +24,9 @@ public class Main{
         
         int posicion = 1;
         
-        for(int i=0;i<3;i++){
+        for(int i=0;i<10;i++){
                 
-                for(int j=0; j<3;j++){
+                for(int j=0; j<10;j++){
                         
                         tablero[i][j] = Integer.toString(posicion).charAt(0);
                         posicion++;
@@ -41,7 +41,7 @@ public class Main{
                 
                 for(int j=0;j<8;j++){
                         
-                        if(j<2)
+                        if(j<8)
                         
                                 System.out.print(" " + tablero[i][j] + " |");
                         
@@ -51,7 +51,7 @@ public class Main{
                                                                 
                 }
                 
-                if(i<2)
+                if(i<8)
                         
                         System.out.println("\n-----------");                                                                    
         }
