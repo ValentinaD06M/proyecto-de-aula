@@ -10,6 +10,7 @@ public class PosiciónAdelantada
         int f2 = 3, c2 = 7; // esquina inferior derecha
         int max = 0, dist1, dist2;
         int[] pos = new int[2]; //posicion a devolver
+        char [] [] Board;
         
         for(int i = 3; i < board.filas; i++) {
             for(int j = 0; i < board.columnas; j++) {
