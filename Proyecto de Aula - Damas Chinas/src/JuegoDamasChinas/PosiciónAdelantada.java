@@ -25,7 +25,7 @@ public class PosiciónAdelantada
                             max = dist1;
                             //fila de la ficha actualmente mas lejana
                             pos[0] = i;
-                            //columna de la fciha actualmente mas lejana
+                            //columna d ela fciha actualmente mas lejana
                         }
                     }
                     else {
@@ -34,7 +34,7 @@ public class PosiciónAdelantada
                             max = dist2;
                             //fila de la ficha actualmente mas lejana
                             pos[0] = i;
-                            //columna de la fciha actualmente mas lejana
+                            //columna d ela fciha actualmente mas lejana
                             pos[1] = j;
                         }
                     }
